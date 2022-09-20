@@ -22,7 +22,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Dynamic UI',
+      title: 'Weather App',
       template: './src/template.html',
     }),
   ],
