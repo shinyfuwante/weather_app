@@ -1,12 +1,48 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+    --header-font-color: silver;
+}
+
 body {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 7fr;
+    height: 100vh;
 }
 
 #header {
-    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 48pt;
+    color: var(--header-font-color);
+    background-color: aquamarine;
+    border-bottom: 2px solid var(--header-font-color);
 }
 
 #content {
-    border: 2px solid green;
+    background-color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5em;
+    gap: 0.5em;
+}
+
+#info-container {
+    display: none;
+    background-color: gainsboro;
+    padding: 1.5em;
+}
+
+#info-container.active {
+    display: block;
 }
