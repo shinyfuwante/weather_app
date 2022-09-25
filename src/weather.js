@@ -3,30 +3,25 @@ const weatherSearcher = (() => {
    * and then using promises to get the weather report for that lat/lon.
    */
   function search(string, api_key) {
-    if (string == "") string = "London";
+    // eslint-disable-next-line no-param-reassign
+    if (string === "") string = "London";
     fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${string}&limit=5&appid=${api_key}`,
       { mode: "cors" }
     )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (response) {
-        return [response[0].lat, response[0].lon];
-      })
-      .then(function (response) {
+      .then((response) => response.json())
+      .then((response) => [response[0].lat, response[0].lon])
+      .then((response) => {
         console.log(response);
         return fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${response[0]}&lon=${response[1]}&appid=${api_key}`,
           { mode: "cors" }
         );
-        //have lat/lon
-        //use this in other api call to get the weather
+        // have lat/lon
+        // use this in other api call to get the weather
       })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (response) {
+      .then((response) => response.json())
+      .then((response) => {
         console.log(response.main);
         console.log(response.main.temp);
         console.log(response.main.feels_like);
